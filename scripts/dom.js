@@ -6,6 +6,7 @@ import {
   multiplicarMon,
   resultadovalido,
   jQueryMostrar,
+  jQueryOcultar,
 } from "./script.js";
 // !Funciones importadas desde dark-mode-switch.js (Modo Oscuro con Storage)
 import { initTheme, resetTheme } from "./dark-mode-switch.js";
@@ -218,10 +219,10 @@ boton.addEventListener("click", () => {
   let checkboxImpuestoAFIP = document.getElementById("checkboxImpuestoAFIP");
   validaCheckboxPAIS(totalcito);
   document.getElementById("resultadoPAIS").value =
-    validaCheckboxPAIS(totalcito);
+    resultadovalido(validaCheckboxPAIS(totalcito));
   validaCheckboxAFIP(totalcito);
   document.getElementById("resultadoAFIP").value =
-    validaCheckboxAFIP(totalcito);
+    resultadovalido(validaCheckboxAFIP(totalcito));
 });
 jQueryMostrar("#resultado", "#botonConvertir");
 // BotonRecargar
@@ -229,6 +230,7 @@ let botonRecargar = document.getElementById("botonRecargar");
 botonRecargar.onclick = () => {
   document.getElementById("FormularioCompleto").reset();
 };
+jQueryOcultar("#resultado", "#botonRecargar");
 // ***********************************************************
 // *                       DarkMode                          *
 // ***********************************************************

@@ -41,17 +41,24 @@ export function validaCheckboxAFIP(total) {
 }
 export function validadorTotalitario(total, afip, pais) {
   let sumaTotal = total + afip + pais;
-  if (afip == " " || pais == " ") {
+  if (afip == " " || pais == " " || isNaN(afip) || isNaN(pais)) {
     return total;
   } else {
     return sumaTotal;
   }
 }
-// Funcion para mostrar y ocultar elementos con jQuery (siempre con "#")
+// Funciones para mostrar y ocultar elementos con jQuery (siempre con "#")
 export function jQueryMostrar(elemento,EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
       $(elemento).show(); //muestro mediante id
+    });
+  });
+}
+export function jQueryOcultar(elemento,EventoDisparador) {
+  $(elemento).ready(function () {
+    $(EventoDisparador).on("click", function () {
+      $(elemento).hide(); //muestro mediante id
     });
   });
 }
