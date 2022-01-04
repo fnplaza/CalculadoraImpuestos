@@ -48,17 +48,29 @@ export function validadorTotalitario(total, afip, pais) {
   }
 }
 // Funciones para mostrar y ocultar elementos con jQuery (siempre con "#")
-export function jQueryMostrar(elemento,EventoDisparador) {
+export function jQueryMostrar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
       $(elemento).show(); //muestro mediante id
     });
   });
 }
-export function jQueryOcultar(elemento,EventoDisparador) {
+export function jQueryOcultar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
       $(elemento).hide(); //muestro mediante id
+    });
+  });
+}
+
+export function jQueryAnimacionConcatenada(contenedor, elemento, elemento2, elemento3, elemento4, EventoDisparador) {
+  $(elemento).ready(function () {
+    $(EventoDisparador).on("click", function () {
+      $(contenedor).hide();
+      $(elemento).fadeOut("fast"); 
+      $(elemento2).fadeOut("fast");
+      $(elemento3).fadeOut("fast");
+      $(elemento4).fadeIn(3000);
     });
   });
 }

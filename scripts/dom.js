@@ -7,6 +7,7 @@ import {
   resultadovalido,
   jQueryMostrar,
   jQueryOcultar,
+  jQueryAnimacionConcatenada,
 } from "./script.js";
 // !Funciones importadas desde dark-mode-switch.js (Modo Oscuro con Storage)
 import { initTheme, resetTheme } from "./dark-mode-switch.js";
@@ -95,7 +96,7 @@ sectionCentral.innerHTML = `      <div class="d-flex justify-content-center" >
   <form action="" id="FormularioCompleto">
     <form>
       <!--Inserta Precio Articulo-->
-      <div class="form-floating mb-3">
+      <div class="form-floating mb-3" id="contenedorPrecio">
         <input
           type="number"
           class="form-control"
@@ -218,13 +219,22 @@ boton.addEventListener("click", () => {
   let checkboxImpuestoPAIS = document.getElementById("checkboxImpuestoPAIS");
   let checkboxImpuestoAFIP = document.getElementById("checkboxImpuestoAFIP");
   validaCheckboxPAIS(totalcito);
-  document.getElementById("resultadoPAIS").value =
-    resultadovalido(validaCheckboxPAIS(totalcito));
+  document.getElementById("resultadoPAIS").value = resultadovalido(
+    validaCheckboxPAIS(totalcito)
+  );
   validaCheckboxAFIP(totalcito);
-  document.getElementById("resultadoAFIP").value =
-    resultadovalido(validaCheckboxAFIP(totalcito));
+  document.getElementById("resultadoAFIP").value = resultadovalido(
+    validaCheckboxAFIP(totalcito)
+  );
 });
-jQueryMostrar("#resultado", "#botonConvertir");
+// jQueryMostrar("#InputPrecio", "#botonConvertir");
+jQueryAnimacionConcatenada("#contenedorPrecio",
+  "#DivisaOrigen",
+  "#InputPrecio",
+  "#DivisaDestino",
+  "#resultado",
+  "#botonConvertir"
+); // Oculta todos los campos de form y muestra el resultado
 // BotonRecargar
 let botonRecargar = document.getElementById("botonRecargar");
 botonRecargar.onclick = () => {
