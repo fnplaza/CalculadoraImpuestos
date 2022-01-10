@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Euro",
+    "simbolo": "€",
+    "value": 116
+  },
+  {
+    "id": 2,
+    "nombre": "Dolar Americano",
+    "simbolo": "U$S",
+    "value": 102
+  },
+  {
+    "id": 3,
+    "nombre": "Libra Esterlina",
+    "simbolo": "£",
+    "value": 139
+  },
+  {
+    "id": 4,
+    "nombre": "Yuan Chino",
+    "simbolo": "¥",
+    "value": 16
+  },
+  {
+    "id": 5,
+    "nombre": "Lira Turca",
+    "simbolo": "₺",
+    "value": 7
+  }
+]

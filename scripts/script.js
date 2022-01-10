@@ -63,11 +63,18 @@ export function jQueryOcultar(elemento, EventoDisparador) {
   });
 }
 
-export function jQueryAnimacionConcatenada(contenedor, elemento, elemento2, elemento3, elemento4, EventoDisparador) {
+export function jQueryAnimacionConcatenada(
+  contenedor,
+  elemento,
+  elemento2,
+  elemento3,
+  elemento4,
+  EventoDisparador
+) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
       $(contenedor).hide();
-      $(elemento).fadeOut("fast"); 
+      $(elemento).fadeOut("fast");
       $(elemento2).fadeOut("fast");
       $(elemento3).fadeOut("fast");
       $(elemento4).fadeIn(3000);

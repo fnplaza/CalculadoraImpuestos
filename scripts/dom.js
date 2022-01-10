@@ -5,7 +5,6 @@ import {
   validadorTotalitario,
   multiplicarMon,
   resultadovalido,
-  jQueryMostrar,
   jQueryOcultar,
   jQueryAnimacionConcatenada,
 } from "./script.js";
@@ -89,7 +88,15 @@ textoTitulo.innerHTML = "<h1>Simulador Costos Compras en el Extranjero</h1>";
 const subTitulo = document.querySelector(".blockquote-footer");
 subTitulo.innerHTML =
   "<p>Hemos desarrollado esta herramienta de conversión para aquellas personas que necesitan calcular el valor de diferentes divisas con datos actualizados, se añadió la posibilidad de calcular impuesto (PAIS-AFIP), en caso de Argentina.</p>";
-// !Section
+// !Section Streaming
+const sectionStreaming = document.querySelector("#sectionStreaming");
+sectionStreaming.innerHTML = `      <div class="d-flex justify-content-center">
+<div class="text-center md-4 mb-3">
+  <img src="./images/png-transparent-netflix-thumbnail.png" alt="netflix" width="150" class="img-fluid" id="imgNetflix">
+  <img src="./images/png-transparent-spotify.png" alt="spotify" width="150" class="img-fluid" id="imgSpotify">
+</div>
+</div>`;
+// !Section Central
 const sectionCentral = document.querySelector("#sectionCentral");
 sectionCentral.innerHTML = `      <div class="d-flex justify-content-center" >
 <div class="col-6">
@@ -175,6 +182,7 @@ sectionCentral.innerHTML = `      <div class="d-flex justify-content-center" >
 // !Footer
 const footer = document.querySelector("#footer");
 // !DivisaOrigen
+/*
 const selectOrigen = document.querySelector("#DivisaOrigen");
 const fragment = document.createDocumentFragment();
 for (let monedaExtranjera of arrayMonedas) {
@@ -183,7 +191,7 @@ for (let monedaExtranjera of arrayMonedas) {
   selectItem.textContent = monedaExtranjera.nombre;
   fragment.appendChild(selectItem);
 }
-selectOrigen.appendChild(fragment);
+selectOrigen.appendChild(fragment);*/
 // !DivisaDestino
 const selectDestino = document.querySelector("#DivisaDestino");
 const fragment2 = document.createDocumentFragment();
@@ -197,6 +205,23 @@ selectDestino.appendChild(fragment2);
 // ***********************************************************
 // *                    Eventos                              *
 // ***********************************************************
+// ValorStreaming
+$("#imgNetflix").one("click", function () {
+  let valorNetflix = 4;
+  valorNetflix = parseInt(valorNetflix);
+  document.getElementById("InputPrecio").value = valorNetflix;
+  $("#sectionStreaming").append(
+    `<div id="usaDolares" class="text-center alert alert-warning" role="alert">Recuerda elegir "DOLARES AMERICANOS"</div>`
+  );
+});
+$("#imgSpotify").one("click", function () {
+  let valorSpotify = 2;
+  valorSpotify = parseInt(valorSpotify);
+  document.getElementById("InputPrecio").value = valorSpotify;
+  $("#sectionStreaming").append(
+    `<div id="usaDolares" class="text-center alert alert-warning" role="alert">Recuerda elegir "DOLARES AMERICANOS"</div>`
+  );
+});
 // BotonConvertir
 let boton = document.getElementById("botonConvertir");
 boton.addEventListener("click", () => {
@@ -228,7 +253,8 @@ boton.addEventListener("click", () => {
   );
 });
 // jQueryMostrar("#InputPrecio", "#botonConvertir");
-jQueryAnimacionConcatenada("#contenedorPrecio",
+jQueryAnimacionConcatenada(
+  "#contenedorPrecio",
   "#DivisaOrigen",
   "#InputPrecio",
   "#DivisaDestino",
