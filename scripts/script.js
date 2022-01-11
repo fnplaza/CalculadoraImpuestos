@@ -1,11 +1,7 @@
 // ***********************************************************
 // *                       Funciones                         *
 // ***********************************************************
-/*function addDarkmodeWidget() {
-  new Darkmode().showWidget();
-}
-window.addEventListener("load", addDarkmodeWidget);*/
-// !Funcion Impuestos
+// !Funciones de calculo
 export function impuestos(monto, porcentaje) {
   let impuesto = (monto * porcentaje) / 100;
   return impuesto.toFixed(2);
@@ -47,7 +43,7 @@ export function validadorTotalitario(total, afip, pais) {
     return sumaTotal;
   }
 }
-// Funciones para mostrar y ocultar elementos con jQuery (siempre con "#")
+// Funciones para mostrar elementos con jQuery (siempre con "#")
 export function jQueryMostrar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
@@ -55,6 +51,7 @@ export function jQueryMostrar(elemento, EventoDisparador) {
     });
   });
 }
+// Oculta elementos con jQuery
 export function jQueryOcultar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
@@ -62,7 +59,7 @@ export function jQueryOcultar(elemento, EventoDisparador) {
     });
   });
 }
-
+// Animacion Concatenada con jQuery
 export function jQueryAnimacionConcatenada(
   contenedor,
   elemento,

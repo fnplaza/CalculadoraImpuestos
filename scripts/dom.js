@@ -205,7 +205,7 @@ selectDestino.appendChild(fragment2);
 // ***********************************************************
 // *                    Eventos                              *
 // ***********************************************************
-// ValorStreaming
+// !Valores Streaming
 $("#imgNetflix").one("click", function () {
   let valorNetflix = 4;
   valorNetflix = parseInt(valorNetflix);
@@ -222,7 +222,7 @@ $("#imgSpotify").one("click", function () {
     `<div id="usaDolares" class="text-center alert alert-warning" role="alert">Recuerda elegir "DOLARES AMERICANOS"</div>`
   );
 });
-// BotonConvertir
+// !BotonConvertir
 let boton = document.getElementById("botonConvertir");
 boton.addEventListener("click", () => {
   event.preventDefault();
@@ -261,7 +261,7 @@ jQueryAnimacionConcatenada(
   "#resultado",
   "#botonConvertir"
 ); // Oculta todos los campos de form y muestra el resultado
-// BotonRecargar
+// !BotonRecargar
 let botonRecargar = document.getElementById("botonRecargar");
 botonRecargar.onclick = () => {
   document.getElementById("FormularioCompleto").reset();
