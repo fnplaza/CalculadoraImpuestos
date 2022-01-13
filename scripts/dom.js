@@ -7,6 +7,7 @@ import {
   resultadovalido,
   jQueryOcultar,
   jQueryAnimacionConcatenada,
+  validarNum,
 } from "./script.js";
 // !Funciones importadas desde dark-mode-switch.js (Modo Oscuro con Storage)
 import { initTheme, resetTheme } from "./dark-mode-switch.js";
@@ -66,7 +67,7 @@ nav.innerHTML = `<div class="container-fluid">
       <a class="nav-link active" aria-current="page" href="#">Inicio</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Cotizacion TR</a>
+      <!--<a class="nav-link" href="#">Cotizacion TR</a>-->
     </li>
   </ul>
   <div class="form-check form-switch">
@@ -90,7 +91,7 @@ subTitulo.innerHTML =
   "<p>Hemos desarrollado esta herramienta de conversión para aquellas personas que necesitan calcular el valor de diferentes divisas con datos actualizados, se añadió la posibilidad de calcular impuesto (PAIS-AFIP), en caso de Argentina.</p>";
 // !Section Streaming
 const sectionStreaming = document.querySelector("#sectionStreaming");
-sectionStreaming.innerHTML = `      <div class="d-flex justify-content-center">
+sectionStreaming.innerHTML = `      <div class="d-flex justify-content-center mb-1"><h5>Calculadora Streaming</h5></div><div class="d-flex justify-content-center">
 <div class="text-center md-4 mb-3">
   <img src="./images/png-transparent-netflix-thumbnail.png" alt="netflix" width="150" class="img-fluid" id="imgNetflix">
   <img src="./images/png-transparent-spotify.png" alt="spotify" width="150" class="img-fluid" id="imgSpotify">
@@ -129,7 +130,7 @@ sectionCentral.innerHTML = `      <div class="d-flex justify-content-center" >
         ></select>
       </div>
       <!--Selecciona si quiere incluir impuestos-->
-      <div class="form-floating mb-3">
+      <div class="d-flex justify-content-center form-floating mb-3">
         <div class="form-check form-check-inline">
           <input
             class="form-check-input"
@@ -155,7 +156,7 @@ sectionCentral.innerHTML = `      <div class="d-flex justify-content-center" >
         </div>
       </div>
       <!--Botones-->
-      <div class="botones mb-3">
+      <div class="botones d-flex justify-content-center mb-3">
         <button class="btn btn-primary" id="botonConvertir">
           Convertir
         </button>
@@ -205,7 +206,7 @@ selectDestino.appendChild(fragment2);
 // ***********************************************************
 // *                    Eventos                              *
 // ***********************************************************
-// !Valores Streaming
+// ValorStreaming
 $("#imgNetflix").one("click", function () {
   let valorNetflix = 4;
   valorNetflix = parseInt(valorNetflix);
@@ -222,7 +223,7 @@ $("#imgSpotify").one("click", function () {
     `<div id="usaDolares" class="text-center alert alert-warning" role="alert">Recuerda elegir "DOLARES AMERICANOS"</div>`
   );
 });
-// !BotonConvertir
+// BotonConvertir
 let boton = document.getElementById("botonConvertir");
 boton.addEventListener("click", () => {
   event.preventDefault();
@@ -231,9 +232,10 @@ boton.addEventListener("click", () => {
   let valorDivisaOrigen = divisaOrig.options[divisaOrig.selectedIndex].value;
   let divisaDest = document.getElementById("DivisaDestino");
   let valorDivisaDest = divisaDest.options[divisaDest.selectedIndex].value;
+  inputUsuario = validarNum(inputUsuario);
   inputUsuario = parseInt(inputUsuario);
   valorDivisaOrigen = parseInt(valorDivisaOrigen);
-  valorDivisaDest = parseInt(valorDivisaDest);
+  valorDivisaDest = parseFloat(valorDivisaDest);
   let resultado = multiplicarMon(inputUsuario, valorDivisaOrigen);
   let totalcito = resultadovalido(resultado);
   document.getElementById("resultadoTotal").value = validadorTotalitario(
@@ -261,7 +263,7 @@ jQueryAnimacionConcatenada(
   "#resultado",
   "#botonConvertir"
 ); // Oculta todos los campos de form y muestra el resultado
-// !BotonRecargar
+// BotonRecargar
 let botonRecargar = document.getElementById("botonRecargar");
 botonRecargar.onclick = () => {
   document.getElementById("FormularioCompleto").reset();

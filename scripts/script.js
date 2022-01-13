@@ -1,7 +1,7 @@
 // ***********************************************************
 // *                       Funciones                         *
 // ***********************************************************
-// !Funciones de calculo
+// !Funcion Impuestos
 export function impuestos(monto, porcentaje) {
   let impuesto = (monto * porcentaje) / 100;
   return impuesto.toFixed(2);
@@ -12,6 +12,28 @@ export function resultadovalido(results) {
   } else {
     return results;
   }
+}
+export function validarNum(valor) {
+  if (valor < 0) {
+    $("#resultado").ready(function () {
+      $("#resultado").hide();
+    });
+    $("#FormularioCompleto")
+      .append(`<div class="alert alert-danger" role="alert">
+    No es posible utilizar valores negativos!
+  </div>`);
+    location.reload(100000);
+  }
+  if (valor == 0) {
+    $("#resultado").ready(function () {
+      $("#resultado").hide();
+    });
+    $("#FormularioCompleto")
+      .append(`<div class="alert alert-danger" role="alert">
+    No es posible utilizar cero!
+  </div>`);
+    location.reload(100000);
+  } else return valor;
 }
 export function multiplicarMon(moneda1, moneda2) {
   return moneda1 * moneda2;
@@ -43,7 +65,7 @@ export function validadorTotalitario(total, afip, pais) {
     return sumaTotal;
   }
 }
-// Funciones para mostrar elementos con jQuery (siempre con "#")
+// Funciones para mostrar y ocultar elementos con jQuery (siempre con "#")
 export function jQueryMostrar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
@@ -51,15 +73,14 @@ export function jQueryMostrar(elemento, EventoDisparador) {
     });
   });
 }
-// Oculta elementos con jQuery
 export function jQueryOcultar(elemento, EventoDisparador) {
   $(elemento).ready(function () {
     $(EventoDisparador).on("click", function () {
-      $(elemento).hide(); //muestro mediante id
+      $(elemento).hide(); //oculto mediante id
     });
   });
 }
-// Animacion Concatenada con jQuery
+
 export function jQueryAnimacionConcatenada(
   contenedor,
   elemento,

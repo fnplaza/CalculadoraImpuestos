@@ -1,6 +1,3 @@
-// ***********************************************************
-// *                    MetodoGet desde JSON                 *
-// ***********************************************************
 const localJson = "./models/monedas.json";
 $.get(localJson, (respuesta, status) => {
   if (status === "success") {
